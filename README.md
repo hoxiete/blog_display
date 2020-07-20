@@ -1,39 +1,74 @@
-# 博客展示端
+# gblog
+<p align="center">
+  <img width="80" src="http://cdn.fengziy.cn/gblog/logo.svg"/>
+</p>
+<p align="center">
+  <a href="https://gitee.com/fengziy/Gblog">
+    <img src="https://gitee.com/fengziy/Gblog/badge/star.svg?theme=white" alt="star"/>
+    <img src="https://gitee.com/fengziy/Gblog/badge/fork.svg" alt="fork"/>
+  </a>
+  <a href="https://github.com/fengziye/Gblog">
+      <img src="https://img.shields.io/github/stars/fengziye/Gblog.svg?style=social" alt="Github star"/>
+      <img src="https://img.shields.io/github/forks/fengziye/Gblog.svg?style=social" alt="Github forks"/>
+  </a>
+  <a href="https://github.com/vuejs/vue">
+    <img src="https://img.shields.io/badge/vue-2.6.11-brightgreen.svg" alt="vue"/>
+  </a>
+  <a href="https://github.com/fengziye/Gblog/blob/master/license">
+    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license"/>
+  </a>
+  <a href="https://github.com/fengziye/Gblog/releases">
+      <img src="https://img.shields.io/github/release/fengziye/Gblog.svg" alt="GitHub release">
+  </a>
+</p>
 
-#### 介绍
-{**以下是码云平台说明，您可以替换此简介**
-码云是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+仓库：[码云](https://gitee.com/fengziy/Gblog) | [github](https://github.com/fengziye/Gblog)  
+[预览demo](http://static.fengziy.cn/Gblog/)
+### 介绍
+>
+> 一款nice的基于 vue 的博客模板。
+> 在一些布局样式上借鉴了[Akina For Typecho](https://zhebk.cn/Web/Akina.html)的风格，也做了一些自己的改动。  
+> 打算用做搭建自己的博客使用，也开源给大家希望能喜欢，欢迎star。
+>
+#### 完成功能
+后面有时间在增加新功能以及优化
+- [x] 搜索
+- [x] 评论
+- [x] 分类/分类文章
+- [x] 主页
+- [x] 文章列表
+- [x] 文章详情
+- [x] 友链
+- [x] 关于页/留言/申请友链
+- [x] 站点运行时间
+- [x] 回到顶部
+- [x] 文章分页
+- [x] 路由动画
+- [x] 点击心形特效
+- [x] 复制文字追加版权信息
 
-#### 软件架构
-软件架构说明
+### 安装依赖
+```
+npm install
+```
+
+### 启动服务
+```
+npm run serve
+```
+
+### 编译打包
+```
+npm run build
+```
+
+### 更多自定义配置
+See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-#### 安装教程
+#### 打赏作者
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 码云特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+<p align="center" id="donate">
+  <img width="120" src="https://images.gitee.com/uploads/images/2020/0618/095618_60414df6_1658323.jpeg">
+  <img width="120" src="https://images.gitee.com/uploads/images/2020/0618/095618_72307c44_1658323.png">
+</p>
