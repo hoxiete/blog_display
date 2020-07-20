@@ -72,3 +72,10 @@ export function fetchComment() {
         params: {}
     })
 }
+export function fetchArticle() {
+    return request({
+        url: '/article',
+        method: 'get',
+        params: {}
+    })
+}
