@@ -6,11 +6,11 @@
                 <div class="focusinfo">
                     <!-- 头像 -->
                     <div class="header-tou">
-                        <router-link to="/"><img :src="websiteInfo.avatar"></router-link>
+                        <router-link to="/"><img :src="websiteInfo.headImg"></router-link>
                     </div>
                     <!-- 简介 -->
                     <div class="header-info">
-                        <p>{{websiteInfo.slogan}}</p>
+                        <p>{{websiteInfo.bz}}</p>
                     </div>
                     <!-- 社交信息 -->
                     <div class="top-social">

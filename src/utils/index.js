@@ -18,12 +18,12 @@ export function parseTime(time, cFormat) {
     date = time
   } else {
     if ((typeof time === 'string')) {
-      if ((/^[0-9]+$/.test(time))) {
-        // support "1548221490638"
-        time = parseInt(time)
-      } else {
-        time = time.replace(new RegExp(/-/gm), '/')
-      }
+      // if ((/^[0-9]+$/.test(time))) {
+      //   // support "1548221490638"
+      //   time = parseInt(time)
+      // } else {
+        // time = time.replace(new RegExp(/-/gm), '/')
+      // }
     }
 
     if ((typeof time === 'number') && (time.toString().length === 10)) {
