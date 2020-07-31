@@ -6,9 +6,12 @@ import './assets/css/style.less'
 import './assets/font/iconfont.css'
 require('./Mock')
 import {parseTime} from './utils'
+import _  from './utils'
 
+Vue.prototype._ = _
 Vue.config.productionTip = false
-Vue.filter('parseTime', (v) => parseTime(v,'{y}-{m}-{d}'))
+Vue.filter('parseTime', (v) => parseTime(v))
+Vue.filter('parseDate', (v) => parseTime(v,'{y}-{m}-{d}'))
 new Vue({
   router,
   store,

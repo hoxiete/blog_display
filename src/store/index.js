@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getTimeInterval } from '../utils/index'
-import { fetchSocial, fetchSiteInfo, fetchCategory } from '@/api'
+import { fetchSocial, fetchSiteInfo, fetchCategory, fetchList } from '@/api'
+import _ from '../utils'
 
 Vue.use(Vuex)
 // 略:后台获取系统运行时间
@@ -12,7 +12,18 @@ const state = {
     runTimeInterval: '',
     socials: '',
     websiteInfo: '',
-    categoryList:''
+    categoryList: [],
+    articleList: {
+        list: [],
+        currPage: '',
+        hasNextPage: ''
+    },
+    articleTypeList: {
+        list: [],
+        currPage: '',
+        hasNextPage: '',
+        type: ''
+    }
 }
 const mutations = {
     SET_LOADING: (state, v) => {
@@ -27,11 +38,17 @@ const mutations = {
     CATEGORY_LIST: (state, v) => {
         state.categoryList = v;
     },
+    POST_LIST: (state, v) => {
+        state.articleList = v;
+    },
+    POST_KEY_LIST: (state, v) => {
+        state.articleTypeList = v;
+    },
     GET_RUNTIME_INTERVAL: (state) => {
         if (!timer || !state.runTimeInterval) {
             clearInterval(timer)
             timer = setInterval(() => {
-                state.runTimeInterval = getTimeInterval(runAt);
+                state.runTimeInterval = _.getTimeInterval(runAt);
             }, 1000);
         }
     }
@@ -68,6 +85,73 @@ const actions = {
                 resolve({});
             })
         })
+    },
+    //进入路由会先获取之前存在的数据，如果没有数据再去获取
+    getFetchList: ({ commit, state }, condition) => {
+        let useSearch = Object.keys(condition).length > 1
+        return new Promise(resolve => {
+            if (!_.isEmpty(state.articleList.list) && !useSearch) {
+                resolve(state.articleList)
+            } else if (!_.isEmpty(state.articleTypeList.list) && useSearch) {
+                resolve(state.articleTypeList)
+            } else {
+                fetchList(condition).then(res => {
+                    let data = res.data || {}
+                    let postList = []
+                    let currPage = ''
+                    let hasNextPage = ''
+                    let result = {}
+                    if (!useSearch) {
+                        postList = state.articleList.list.concat(data.blogs || []);
+                        currPage = data.page;
+                        hasNextPage = data.hasNextPage;
+                        result = { list: postList, currPage: currPage, hasNextPage: hasNextPage }
+                        commit('POST_LIST', result);
+                    } else {
+                        postList = state.articleTypeList.list.concat(data.blogs || []);
+                        currPage = data.page;
+                        hasNextPage = data.hasNextPage;
+                        result = { list: postList, currPage: currPage, hasNextPage: hasNextPage, type: condition[Object.keys(condition)[0]] }
+                        commit('POST_KEY_LIST', result);
+                    }
+                    resolve(result);
+                }).catch(err => {
+                    resolve({});
+                })
+            }
+        })
+
+    },
+    //首页数据和搜索类型数据分开缓存
+    getLoadMore: ({ commit, state }, condition) => {
+        let useSearch = Object.keys(condition).length > 1
+        return new Promise(resolve => {
+            fetchList(condition).then(res => {
+                let data = res.data || {}
+                let postList = []
+                let currPage = ''
+                let hasNextPage = ''
+                let result = {}
+                if (!useSearch) {
+                    postList = state.articleList.list.concat(data.blogs || []);
+                    currPage = data.page;
+                    hasNextPage = data.hasNextPage;
+                    result = { list: postList, currPage: currPage, hasNextPage: hasNextPage }
+                    commit('POST_LIST', result);
+                } else {
+                    postList = state.articleTypeList.list.concat(data.blogs || []);
+                    currPage = data.page;
+                    hasNextPage = data.hasNextPage;
+                    result = { list: postList, currPage: currPage, hasNextPage: hasNextPage, type: condition[Object.keys(condition)[0]] }
+                    commit('POST_KEY_LIST', result);
+                }
+                resolve(result);
+            }).catch(err => {
+                resolve({});
+            })
+            // }
+        })
+
     },
     getSocials: ({ commit, state }) => {
         let data = [
@@ -121,7 +205,8 @@ const getters = {
     loading: state => state.loading,
     runTimeInterval: state => state.runTimeInterval,
     notice: state => state.websiteInfo ? state.websiteInfo.notice : '',
-    categoryList: state => state.categoryList ? state.categoryList : ''
+    categoryList: state => state.categoryList ? state.categoryList : '',
+    postList: state => state.postList ? state.postList : ''
 }
 export default new Vuex.Store({
     state,

@@ -1,86 +1,110 @@
-@fish-sm:2vmin;
-@fish-md:3vmin;
-@fish-lg:5vmin;
+@fish-sm: 2vmin;
+@fish-md: 3vmin;
+@fish-lg: 5vmin;
 @import "./reset.css";
+
 * {
-  font-family: miranafont, "Hiragino Sans GB", STXihei, "Microsoft YaHei", SimSun, sans-serif;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
+  font-family            : miranafont, "Hiragino Sans GB", STXihei, "Microsoft YaHei", SimSun, sans-serif;
+  margin                 : 0;
+  padding                : 0;
+  text-decoration        : none;
+  box-sizing             : border-box;
+  -webkit-font-smoothing : antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 1px;
+  letter-spacing         : 1px;
 }
-[v-cloak]{
+
+[v-cloak] {
   display: none;
 }
+
 ::-webkit-scrollbar {
-  width: 5px;
+  width : 5px;
   height: 5px;
 }
+
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius   : 10px;
   background-color: #d81e06;
 }
+
 ::-webkit-scrollbar-track {
   background-color: #ffffff;
 }
+
 @keyframes main {
   0% {
-    opacity: 0;
+    opacity  : 0;
     transform: translateY(50px);
   }
 
   100% {
-    opacity: 1;
+    opacity  : 1;
     transform: translateY(0);
   }
 }
+
 .site-content {
-  margin: 0 auto;
-  padding: 0 10px;
-  max-width: 800px;
+  margin   : 0 auto;
+  padding  : 0 10px;
+  max-width: 900px;
 }
-.animate{
+
+.animate {
   animation: main 1.5s;
 }
-@media (max-width: 800px){
+
+@media (max-width: 900px) {
   .site-content {
-    animation:none;
-    padding: 50px 4% 0 4%;
+    animation: none;
+    padding  : 50px 4% 0 4%;
   }
 }
+
 /**文章样式**/
-.entry-content{
+.entry-content {
 
   /* BLOCKS
   =============================================================================*/
 
-  p, blockquote, ul, ol, dl, table, pre {
+  p,
+  blockquote,
+  ul,
+  ol,
+  dl,
+  table,
+  pre {
     margin: 15px 0;
   }
 
   /* HEADERS
   =============================================================================*/
-  h1,h2,h3,h4,h5,h6 {
-    color: #4f4f4f;
-    margin: 8px 0 16px;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color      : #4f4f4f;
+    margin     : 8px 0 16px;
     font-weight: 700;
-    position: relative;
-    &:hover{
+    position   : relative;
+
+    &:hover {
       &:before {
-        left: -28px;
+        left    : -28px;
         position: absolute;
-        content: '「 ';
-        color: #ff6d6d;
+        content : '「 ';
+        color   : #ff6d6d;
       }
-      &:after{
+
+      &:after {
         //position: absolute;
         content: ' 」';
-        color: #ff6d6d;
+        color  : #ff6d6d;
       }
     }
+
     //&:before{
     //  content: '「 ';
     //  color: #ff6d6d;
@@ -91,61 +115,87 @@
     //}
   }
 
-  h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  h1 tt,
+  h1 code,
+  h2 tt,
+  h2 code,
+  h3 tt,
+  h3 code,
+  h4 tt,
+  h4 code,
+  h5 tt,
+  h5 code,
+  h6 tt,
+  h6 code {
     font-size: inherit;
   }
+
   h1 {
-    font-size: 28px;
+    font-size  : 28px;
     line-height: 36px;
   }
+
   h2 {
-    font-size: 24px;
+    font-size  : 24px;
     line-height: 32px;
   }
+
   h3 {
-    font-size: 22px;
+    font-size  : 22px;
     line-height: 30px;
   }
+
   h4 {
-    font-size: 20px;
+    font-size  : 20px;
     line-height: 28px;
   }
+
   h5 {
-    font-size: 18px;
+    font-size  : 18px;
     line-height: 26px;
   }
+
   h6 {
-    font-size: 16px;
+    font-size  : 16px;
     line-height: 24px;
   }
+
   /* LINKS
   =============================================================================*/
 
   a {
-    color: #6795b5;
+    color          : #6795b5;
     text-decoration: none;
   }
+
   a:active,
   a:hover {
     outline: 0;
   }
-  a:hover,a:focus {
-    color: #cb4b16;
+
+  a:hover,
+  a:focus {
+    color          : #cb4b16;
     text-decoration: none;
   }
 
   /* LISTS
   =============================================================================*/
-  ul, ol {
+  ul,
+  ol {
     padding-left: 30px;
-    li{
+
+    li {
       list-style-type: disc;
-      margin: 8px 0 0 32px;
+      margin         : 8px 0 0 32px;
     }
   }
 
 
-  ul ul, ul ol, ol ol, ol ul {
+  ul ul,
+  ul ol,
+  ol ol,
+  ol ul {
     margin-bottom: 0;
   }
 
@@ -154,11 +204,11 @@
   }
 
   dl dt {
-    font-size: 14px;
+    font-size  : 14px;
     font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px;
+    font-style : italic;
+    padding    : 0;
+    margin     : 15px 0 5px;
   }
 
   dl dt:first-child {
@@ -174,7 +224,7 @@
   }
 
   dl dd {
-    margin: 0 0 15px;
+    margin : 0 0 15px;
     padding: 0 15px;
   }
 
@@ -189,53 +239,195 @@
   /* CODE
   =============================================================================*/
 
-  pre, code, tt {
-    font-size: 15px;
-    font-family: Consolas, "Liberation Mono", Courier, monospace;
-  }
+  // pre, code, tt {
+  //   font-size: 15px;
+  //   font-family: Consolas, "Liberation Mono", Courier, monospace;
+  // }
 
-  code, tt {
-    margin: 0 5px;
-    padding: 2px;
-    white-space: nowrap;
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border: 1px solid #eaeaea;
-    border-radius: 3px;
-  }
+  // code, tt {
+  //   margin: 0 5px;
+  //   padding: 2px;
+  //   white-space: nowrap;
+  //   color: #c7254e;
+  //   background-color: #f9f2f4;
+  //   border: 1px solid #eaeaea;
+  //   border-radius: 3px;
+  // }
 
-  pre>code {
-    margin: 0;
-    padding: 0;
-    white-space: pre;
-    color: #333;
-    border: none;
-    background: transparent;
-  }
+  // pre>code {
+  //   margin: 0;
+  //   padding: 0;
+  //   white-space: pre;
+  //   color: #333;
+  //   border: none;
+  //   background: transparent;
+  // }
+
+  // pre code, pre tt {
+  //   background-color: transparent;
+  //   border: none;
+  // }
 
   pre {
     background-color: #f8f8f8;
-    border: 1px solid #F9F9F9;
-    line-height: 1.5rem;
-    overflow: auto;
-    padding: 6px 10px;
-    border-radius: 3px;
+    border          : 1px solid #F9F9F9;
+    line-height     : 1.5rem;
+    overflow        : auto;
+    padding         : 6px 10px;
+    border-radius   : 3px;
   }
 
-  pre code, pre tt {
-    background-color: transparent;
-    border: none;
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color       : black;
+    background  : none;
+    text-shadow : 0 1px white;
+    font-family : Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size   : 1em;
+    text-align  : left;
+    white-space : pre;
+    word-spacing: normal;
+    word-break  : normal;
+    word-wrap   : normal;
+    line-height : 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size  : 4;
+    tab-size     : 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens   : none;
+    -ms-hyphens    : none;
+    hyphens        : none;
   }
+
+  pre[class*="language-"]::-moz-selection,
+  pre[class*="language-"] ::-moz-selection,
+  code[class*="language-"]::-moz-selection,
+  code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background : #b3d4fc;
+  }
+
+  pre[class*="language-"]::selection,
+  pre[class*="language-"] ::selection,
+  code[class*="language-"]::selection,
+  code[class*="language-"] ::selection {
+    text-shadow: none;
+    background : #b3d4fc;
+  }
+
+  @media print {
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+      text-shadow: none;
+    }
+  }
+
+  /* Code blocks */
+  pre[class*="language-"] {
+    padding : 1em;
+    margin  : .5em 0;
+    overflow: auto;
+  }
+
+  :not(pre)>code[class*="language-"],
+  pre[class*="language-"] {
+    background: #f5f2f0;
+  }
+
+  /* Inline code */
+  :not(pre)>code[class*="language-"] {
+    padding      : .1em;
+    border-radius: .3em;
+    white-space  : normal;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: slategray;
+  }
+
+  .token.punctuation {
+    color: #999;
+  }
+
+  .token.namespace {
+    opacity: .7;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: #905;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #690;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    color     : #9a6e3a;
+    /* This background color was intended by the author of this theme. */
+    background: hsla(0, 0%, 100%, .5);
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    color: #07a;
+  }
+
+  .token.function,
+  .token.class-name {
+    color: #DD4A68;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: #e90;
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+
+  .token.italic {
+    font-style: italic;
+  }
+
+  .token.entity {
+    cursor: help;
+  }
+
   /* QUOTES
   =============================================================================*/
 
   blockquote {
-    border-left: 4px solid #A0DAD0;
+    border-left     : 4px solid #A0DAD0;
     background-color: #ebeef5;
-    border-radius: 3px;
-    padding: 15px 20px;
-    margin: 15px 0;
-    color: #777;
+    border-radius   : 3px;
+    padding         : 15px 20px;
+    margin          : 15px 0;
+    color           : #777;
   }
 
   blockquote>:first-child {
@@ -250,28 +442,30 @@
   =============================================================================*/
 
   hr {
-    margin: 24px 0;
-    border: none;
+    margin       : 24px 0;
+    border       : none;
     border-bottom: 1px solid #ddd;
-    clear: both;
+    clear        : both;
   }
 
   /* TABLES
   =============================================================================*/
-  table{
+  table {
     margin: 0 auto;
   }
+
   table th {
     font-weight: bold;
   }
 
-  table th, table td {
-    border: 1px solid #ccc;
+  table th,
+  table td {
+    border : 1px solid #ccc;
     padding: 6px 13px;
   }
 
   table tr {
-    border-top: 1px solid #ccc;
+    border-top      : 1px solid #ccc;
     background-color: #fff;
   }
 
@@ -285,11 +479,12 @@
   img {
     max-width: 100%
   }
+
   /* P
   =============================================================================*/
-  p{
-    font-size: 16px;
-    color: #4d4d4d;
+  p {
+    font-size  : 16px;
+    color      : #4d4d4d;
     font-weight: 400;
     line-height: 26px;
   }
@@ -297,12 +492,15 @@
   /**
   =============================================================================*/
   @media (max-width: 800px) {
-    ul, ol {
+
+    ul,
+    ol {
       padding-left: 10px;
-      margin: 0;
-      li{
+      margin      : 0;
+
+      li {
         list-style: inside;
-        margin: 0;
+        margin    : 0;
       }
     }
   }

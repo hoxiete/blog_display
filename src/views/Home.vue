@@ -57,7 +57,7 @@ export default {
       features: [],
       postList: [],
       currPage: 1,
-      hasNextPage: false
+      hasNextPage: false,
     };
   },
   components: {
@@ -66,7 +66,7 @@ export default {
     sectionTitle,
     Post,
     SmallIco,
-    Quote
+    Quote,
   },
   computed: {
     ...mapGetters(["categoryList"]),
@@ -83,13 +83,18 @@ export default {
       return this.$store.getters.notice;
     },
     selectCondition() {
+      let params = {};
       if (this.category != undefined) {
-        let type = this.categoryList.find(ele => ele.label === this.category);
-        return { title: this.searchWords, typeId: type.value };
+        let type = this.categoryList.find((ele) => ele.label === this.category);
+        return Object.assign(params, { typeId: type.value });
       }
-    }
+      if (this.searchWords != undefined) {
+        return { title: this.searchWords };
+      }
+    },
   },
   methods: {
+    ...mapActions(["getFetchList","getLoadMore"]),
     fetchFocus() {
       // fetchFocus().then(res => {
       //     this.features = res || []
@@ -99,41 +104,43 @@ export default {
       this.features = fetchFocus();
     },
     fetchList() {
-      fetchList(this.selectCondition)
-        .then(res => {
-          this.postList = res.data.blogs || [];
-          this.currPage = res.data.page;
-          this.hasNextPage = res.data.hasNextPage;
+      this.getFetchList(Object.assign(this.selectCondition || {},{
+          pageNum: 1
+        }))
+        .then((data) => {
+          this.postList = data.list || [];
+          this.currPage = data.currPage;
+          this.hasNextPage = data.hasNextPage;
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
     },
     loadMore() {
-      fetchList(
-        Object.assign(this.selectCondition, { pageNum: this.currPage + 1 })
-      ).then(res => {
-        this.postList = this.postList.concat(res.data.blogs || []);
-        this.currPage = res.data.page;
-        this.hasNextPage = res.data.hasNextPage;
+      this.getLoadMore(
+        Object.assign(this.selectCondition || {}, {
+          pageNum: this.currPage + 1
+        })
+      ).then((data) => {
+        this.postList = data.list || [];
+        this.currPage = data.currPage;
+        this.hasNextPage = data.hasNextPage;
       });
-    }
+    },
   },
-  beforeRouteUpdate(to, from, next) {
-    next();
-    this.fetchList();
+  // beforeRouteUpdate(to, from, next) {
+  //   next();
+  //   this.fetchList();
+  // },
+  beforeRouteEnter(to, from, next) {
+    next(async (vm) => {
+      vm.fetchList();
+    });
   },
-  //   beforeRouteEnter(to, from, next) {
-  //     next(async vm => {
-  //       vm.initQueryParam = clone(vm.queryParam) // 初始表单
-  //       await vm.getData()
-  //       await vm.getSelect()
-  //     })
-  //   },
   mounted() {
     this.fetchFocus();
-    this.fetchList();
-  }
+    // this.fetchList();
+  },
 };
 </script>
 <style scoped lang="less">

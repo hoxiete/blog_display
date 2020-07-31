@@ -10,11 +10,11 @@
             <h1 class="entry-title">{{article.title}}</h1>
             <hr />
             <div class="breadcrumbs">
-              <div id="crumbs">最后更新时间：{{article.updateTime}}</div>
+              <div id="crumbs">最后更新时间：{{article.updateTime | parseTime}}</div>
             </div>
           </header>
           <!-- 正文输出 -->
-          <div class="entry-content" :v-html="article.bodyHtml">
+          <div class="entry-content" v-html="article.bodyHtml">
           </div>
           <!-- 文章底部 -->
           <section-title>
@@ -114,6 +114,11 @@ export default {
     sectionTitle,
     comment
   },
+  computed:{
+    articleId(){
+      return this.$route.params.id
+    }
+  },
   methods: {
     getComment() {
       fetchComment()
@@ -125,8 +130,9 @@ export default {
         });
     },
     getArticle() {
-      fetchArticle()
+      fetchArticle(this.articleId)
         .then(res => {
+          debugger
           this.article = res.data || {};
         })
         .catch(err => {

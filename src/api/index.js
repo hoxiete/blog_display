@@ -72,9 +72,9 @@ export function fetchComment() {
         params: {}
     })
 }
-export function fetchArticle() {
+export function fetchArticle(id) {
     return request({
-        url: '/article',
+        url: '/getBlogDetail/'+id,
         method: 'get',
         params: {}
     })

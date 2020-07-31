@@ -63,6 +63,6 @@ router.afterEach((to, from) => {
     // 最多延迟 关闭 loading
     setTimeout(() => {
         store.dispatch('setLoading', false);
-    }, 1500)
+    }, 500)
 })
 export default router
