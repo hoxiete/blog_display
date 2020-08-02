@@ -1,6 +1,6 @@
 <template>
   <div class="articles">
-    <banner></banner>
+    <banner :src="article.imageUrl"></banner>
     <div class="site-content animate">
       <main class="site-main">
         <article class="hentry">
@@ -14,8 +14,7 @@
             </div>
           </header>
           <!-- 正文输出 -->
-          <div class="entry-content" v-html="article.bodyHtml">
-          </div>
+          <div class="entry-content" v-html="article.bodyHtml"></div>
           <!-- 文章底部 -->
           <section-title>
             <footer class="post-footer">
@@ -99,51 +98,51 @@
 import Banner from "@/components/banner";
 import sectionTitle from "@/components/section-title";
 import comment from "@/components/comment";
-import { fetchComment,fetchArticle } from "../api";
+import { fetchComment, fetchArticle } from "../api";
 export default {
   name: "articles",
   data() {
     return {
       showDonate: false,
       comments: [],
-      article: {}
+      article: {},
     };
   },
   components: {
     Banner,
     sectionTitle,
-    comment
+    comment,
   },
-  computed:{
-    articleId(){
-      return this.$route.params.id
+  computed: {
+    articleId() {
+      return this.$route.params.id;
     }
   },
   methods: {
     getComment() {
       fetchComment()
-        .then(res => {
+        .then((res) => {
           this.comments = res.data || [];
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
     },
     getArticle() {
       fetchArticle(this.articleId)
-        .then(res => {
-          debugger
+        .then((res) => {
+          debugger;
           this.article = res.data || {};
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
-    }
+    },
   },
   created() {
-    this.getArticle()
-    this.getComment()
-  }
+    this.getArticle();
+    this.getComment();
+  },
 };
 </script>
 <style scoped lang="less">

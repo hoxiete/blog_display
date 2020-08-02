@@ -1,10 +1,12 @@
 import axios from 'axios'
 import store from '@/store'
 
+export const imgBaseUrl = "http://resource.hoxiete.cn/"
 // create an axios instance
 const service = axios.create({
-    // baseURL: process.env.VUE_APP_BASE_API,
-    baseURL: "http://localhost:8088/blogShow",
+     baseURL: process.env.VUE_APP_BASE_API,
+    // baseURL: "http://localhost:8088/blogShow",
+    //  baseURL: "http://www.hoxiete.cn/zhwtf/blogShow",
     timeout: 5000 // request timeout
 })
 
