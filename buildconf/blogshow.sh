@@ -4,8 +4,8 @@ rm -rf blogShowVue
 mkdir blogShowVue
 mv dist buildconf/Dockerfile buildconf/default.conf -f blogShowVue
 cd ./blogAdminVue
-imagename=vueblogShow
-name=vueblogshow
+imagename=vueblogshow
+name=vueblogShow
 images=$(docker images | grep $imagename | sort -t ' ' -k 2  -r | head -n 3 | awk 'NR==3 {print $2}')
 if  [ $images ]; then
         docker rmi $imagename$images
