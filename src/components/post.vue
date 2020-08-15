@@ -62,7 +62,6 @@ export default {
   },
   computed: {
     imgUrl() {
-      debugger
       return this.imgBaseUrl.concat(this._.isEmpty(this.post.imageUrl) ? this.defaultImg : this.post.imageUrl);
     },
   },

@@ -128,10 +128,10 @@ export default {
       });
     },
   },
-  // beforeRouteUpdate(to, from, next) {
-  //   next();
-  //   this.fetchList();
-  // },
+  beforeRouteUpdate(to, from, next) {
+    next();
+    this.fetchList();
+  },
   beforeRouteEnter(to, from, next) {
     next(async (vm) => {
       vm.fetchList();
