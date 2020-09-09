@@ -131,7 +131,6 @@ export default {
     getArticle() {
       fetchArticle(this.articleId)
         .then((res) => {
-          debugger;
           this.article = res.data || {};
         })
         .catch((err) => {

@@ -90,9 +90,9 @@ const actions = {
     getFetchList: ({ commit, state }, condition) => {
         let useSearch = Object.keys(condition).length > 1
         return new Promise(resolve => {
-            if (!_.isEmpty(state.articleList.list) && !useSearch) {
+            if (!useSearch && !_.isEmpty(state.articleList.list)) {
                 resolve(state.articleList)
-            } else if (!_.isEmpty(state.articleTypeList.list) && useSearch) {
+            } else if (useSearch && !_.isEmpty(state.articleTypeList.list) && state.articleTypeList.type == condition[Object.keys(condition)[0]]) {
                 resolve(state.articleTypeList)
             } else {
                 fetchList(condition).then(res => {
@@ -102,13 +102,13 @@ const actions = {
                     let hasNextPage = ''
                     let result = {}
                     if (!useSearch) {
-                        postList = state.articleList.list.concat(data.blogs || []);
+                        postList = state.articleList.list = (data.blogs || []);
                         currPage = data.page;
                         hasNextPage = data.hasNextPage;
                         result = { list: postList, currPage: currPage, hasNextPage: hasNextPage }
                         commit('POST_LIST', result);
                     } else {
-                        postList = state.articleTypeList.list.concat(data.blogs || []);
+                        postList = state.articleTypeList.list=(data.blogs || []);
                         currPage = data.page;
                         hasNextPage = data.hasNextPage;
                         result = { list: postList, currPage: currPage, hasNextPage: hasNextPage, type: condition[Object.keys(condition)[0]] }

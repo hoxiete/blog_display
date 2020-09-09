@@ -1,16 +1,16 @@
 #!/bin/bash
 cd ./remote_home/
 lib=blogShowVue
+imagename=vueblogshow
+name=vueblogShow
 rm -rf $lib
 mkdir $lib
 mv dist buildconf/Dockerfile buildconf/default.conf -f $lib
 cd ./$lib
-imagename=vueblogshow
-name=vueblogShow
 images=$(docker images | grep $imagename | sort -t ' ' -k 2  -r | head -n 3 | awk 'NR==3 {print $2}')
 if  [ $images ]; then
-        docker rmi $imagename$images
-        echo "delete $imagename$images"
+        docker rmi $imagename:$images
+        echo "delete $imagename:$images"
 else
         echo 'images not exist'
 fi

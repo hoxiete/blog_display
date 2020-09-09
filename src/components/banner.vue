@@ -40,12 +40,13 @@ export default {
       imgBaseUrl,
       websiteInfo: {},
       socials: [],
+      defaultUrl:'group1/M00/00/00/rBMABF8mU5OAIAtuAAjqCyD3k04484.jpg'
     };
   },
   props: {
     src: {
       type: String,
-      default: "group1/M00/00/00/rBMABF8mU5OAIAtuAAjqCyD3k04484.jpg",
+      // default: "group1/M00/00/00/rBMABF8mU5OAIAtuAAjqCyD3k04484.jpg",
     },
     isHome: {
       type: [Boolean, String],
@@ -54,10 +55,9 @@ export default {
   },
   computed: {
     imgUrl() {
-      return this.imgBaseUrl + this.src;
+      return this.imgBaseUrl.concat(this._.isEmpty(this.src)? this.defaultUrl : this.src);
     },
     headImg() {
-      debugger
       return this.imgBaseUrl + this.websiteInfo.headimg;
     },
   },
