@@ -21,7 +21,7 @@
             <hr/>
             <div class="friend-list animate">
                 <div class="friend-item" v-for="item in list" :key="item.id"><a target="_blank" :href="item.path"><div class="site-name">{{item.siteName}}</div><div class="site-detail">{{item.desc}}</div></a></div>
-            </div>
+            </div> 
         </div>
     </div>
 </template>
