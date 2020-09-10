@@ -58,7 +58,7 @@ export default {
       return this.imgBaseUrl.concat(this._.isEmpty(this.src)? this.defaultUrl : this.src);
     },
     headImg() {
-      return this.imgBaseUrl + this.websiteInfo.headimg;
+      return imgBaseUrl + this.websiteInfo.headimg 
     },
   },
   created() {
@@ -74,6 +74,8 @@ export default {
     getWebSiteInfo() {
       this.$store.dispatch("getSiteInfo").then((data) => {
         this.websiteInfo = data;
+        let imgcut = data.headimg.split(".")
+        this.websiteInfo.headimg = imgcut[0].concat("_150x150.").concat(imgcut[1])
       });
     },
   },
