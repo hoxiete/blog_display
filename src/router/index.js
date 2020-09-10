@@ -56,6 +56,7 @@ router.beforeEach((to, from, next) => {
         title = `${to.meta.title} - ${title}`
     }
     document.title = title
+
     store.dispatch('setLoading', true);
     next();
 })
@@ -63,6 +64,7 @@ router.afterEach((to, from) => {
     // 最多延迟 关闭 loading
     setTimeout(() => {
         store.dispatch('setLoading', false);
+        window.scrollTo(0,0);
     }, 500)
 })
 export default router
